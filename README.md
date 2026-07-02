@@ -57,6 +57,15 @@ Follow the instructions below to set up your project.
 Создаём юзера для входа в админ панель http://localhost:8001/admin/login
 - Run command ```php artisan make:filament-user```
 
+## Adminer
+Смотрим базу данных через adminer:
+```php
+http://127.0.0.1:8000/sqlite.php
+```
+Выбираем __database/database.sqlite__
+Пароль __12345678__
+
+![Adminer](adminer/logged-in.webp)
 
 ## Notes
 
