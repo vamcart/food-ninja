@@ -65,8 +65,6 @@ http://127.0.0.1:8000/sqlite.php
 Выбираем __database/database.sqlite__
 Пароль __12345678__
 
-![Adminer](/src/public/adminer/logged-in.webp)
-
 ![Вход](src/public/adminer/adminer-1.png)
 ![База данных](src/public/adminer/adminer-2.png)
 
