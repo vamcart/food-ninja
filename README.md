@@ -60,7 +60,7 @@ Follow the instructions below to set up your project.
 ## Adminer
 Смотрим базу данных через adminer:
 ```php
-http://127.0.0.1:8000/sqlite.php
+http://localhost:8001/sqlite.php
 ```
 Выбираем __database/database.sqlite__
 Пароль __12345678__
