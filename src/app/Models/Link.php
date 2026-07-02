@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
 {
-    protected $fillable = ['url'];
+    protected $fillable = ['url','short_url', 'short_url_hash'];
 }
