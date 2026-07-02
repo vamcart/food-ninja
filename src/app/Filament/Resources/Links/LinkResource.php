@@ -14,6 +14,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -90,25 +91,29 @@ public static function infolist(Schema $schema): Schema
         TextInput::make('short_url_hash')
             ->label('Hash')
             ->disabled(),
-
-        // Timestamps
         TextInput::make('created_at')
             ->label('Created at')
             ->disabled(),
         TextInput::make('updated_at')
             ->label('Updated at')
             ->disabled(),
-
-        // Total visits count (computed on the fly)
         TextInput::make('visit_count')
             ->label('Total Visits')
             ->placeholder(fn ($record) => ($record->visits()->count() ?? 0))
             ->disabled(),
         // Visits list
-        TextInput::make('visit_details')
+        Repeater::make('visits')
+            ->relationship()
             ->label('Visits')
-            ->default(fn ($record) => $record->visits()->map(fn($v)=>$v->ip_address.' - '.$v->visited_at)->implode("\n"))
-            ->disabled(),
+            ->schema([
+                TextInput::make('ip_address')
+                    ->label('IP Address')
+                    ->disabled(),
+                TextInput::make('visited_at')
+                    ->label('Visited At')
+                    ->disabled(),
+            ])
+        ->columnSpanFull()
     ]);
 }
 
