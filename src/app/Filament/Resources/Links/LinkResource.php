@@ -9,8 +9,8 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Hidden;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -66,6 +66,7 @@ class LinkResource extends Resource
                 //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make(),
             ])
@@ -76,7 +77,42 @@ class LinkResource extends Resource
             ]);
     }
 
-    public static function getPages(): array
+public static function infolist(Schema $schema): Schema
+{
+    return $schema->components([
+        // Basic link info (read‑only)
+        TextInput::make('url')
+            ->label('URL')
+            ->disabled(),
+        TextInput::make('short_url')
+            ->label('Short URL')
+            ->disabled(),
+        TextInput::make('short_url_hash')
+            ->label('Hash')
+            ->disabled(),
+
+        // Timestamps
+        TextInput::make('created_at')
+            ->label('Created at')
+            ->disabled(),
+        TextInput::make('updated_at')
+            ->label('Updated at')
+            ->disabled(),
+
+        // Total visits count (computed on the fly)
+        TextInput::make('visit_count')
+            ->label('Total Visits')
+            ->placeholder(fn ($record) => ($record->visits()->count() ?? 0))
+            ->disabled(),
+        // Visits list
+        TextInput::make('visit_details')
+            ->label('Visits')
+            ->default(fn ($record) => $record->visits()->map(fn($v)=>$v->ip_address.' - '.$v->visited_at)->implode("\n"))
+            ->disabled(),
+    ]);
+}
+
+public static function getPages(): array
     {
         return [
             'index' => ManageLinks::route('/'),
