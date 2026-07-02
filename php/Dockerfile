@@ -48,8 +48,26 @@ RUN docker-php-ext-install -j$(nproc) intl && \
     docker-php-ext-install exif  && \
     docker-php-ext-install zip 
 
-# Enable PHP Extentions    
-#RUN docker-php-ext-enable zip
-
-
 #COPY  ./php/xdebug-nginx.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+# Add ARGs for syncing permissions
+ARG UID=1000
+ARG GID=1000
+
+# Create a new user with the specified UID and GID, reusing an existing group if GID exists
+RUN if getent group ${GID}; then \
+      group_name=$(getent group ${GID} | cut -d: -f1); \
+      useradd -m -u ${UID} -g ${GID} -s /bin/bash www; \
+    else \
+      groupadd -g ${GID} www && \
+      useradd -m -u ${UID} -g www -s /bin/bash www; \
+      group_name=www; \
+    fi
+
+# Dynamically update php-fpm to use the new user and group
+RUN sed -i "s/user = www-data/user = www/g" /usr/local/etc/php-fpm.d/www.conf && \
+    sed -i "s/group = www-data/group = $group_name/g" /usr/local/etc/php-fpm.d/www.conf
+
+
+# Switch back to the non-privileged user to run the application
+USER www-data

@@ -49,6 +49,7 @@ services:
         restart: unless-stopped
         tty: true
         working_dir: /var/www/app
+        user: "${UID:-1000}:${GID:-1000}"
         volumes: 
             - ./src:/var/www/app
         ports: 
