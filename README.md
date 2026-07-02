@@ -67,6 +67,9 @@ http://127.0.0.1:8000/sqlite.php
 
 ![Adminer](/src/public/adminer/logged-in.webp)
 
+![Вход](src/public/adminer/adminer-1.png)
+![База данных](src/public/adminer/adminer-2.png)
+
 ## Notes
 
 - If you encounter a permission error when running Docker, try running it as an administrator or using ```sudo``` in Linux.
