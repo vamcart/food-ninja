@@ -10,11 +10,11 @@
 * Nginx
 * PHP 8.3
 
-### Установка и запуск
+## Установка и запуск
 
 2 варианта запуска: в docker окружении и с помощью artisan serve
 
-### Запуск в docker окружении
+## Запуск в docker окружении
 
 1. Запустить приложение в docker окружении. Выполните команду в консоли:
 - ```chmod +x ./start.sh && ./start.sh```
@@ -48,11 +48,9 @@
 ```php artisan make:filament-user```
 13. А можно просто открыть http://localhost:8001/ , и пройти регистрацию, нажав sign up for an account - http://localhost:8001/register
 
-### Запуск с artisan serve
+## Запуск с artisan serve
 
-
-
-
+```php artisan serve```
 
 ## Adminer
 Смотрим базу данных через adminer:
