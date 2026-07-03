@@ -12,6 +12,10 @@
 
 ### Установка и запуск
 
+2 варианта запуска: в docker окружении и с помощью artisan serve
+
+### Запуск в docker окружении
+
 1. Запустить приложение в docker окружении. Выполните команду в консоли:
 - ```chmod +x ./start.sh && ./start.sh```
 2. Откройте в браузере http://localhost:8001
@@ -43,6 +47,12 @@
 12. Можно сгенерировать filament пользователя через консоль:
 ```php artisan make:filament-user```
 13. А можно просто открыть http://localhost:8001/ , и пройти регистрацию, нажав sign up for an account - http://localhost:8001/register
+
+### Запуск с artisan serve
+
+
+
+
 
 ## Adminer
 Смотрим базу данных через adminer:
