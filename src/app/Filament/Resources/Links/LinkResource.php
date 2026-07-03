@@ -19,6 +19,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 use Illuminate\Support\Facades\URL;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class LinkResource extends Resource
 {
@@ -42,6 +44,11 @@ class LinkResource extends Resource
                 ->disabled()
                 ->dehydrated(),
             ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('user_id', Auth::id());
     }
 
     public static function table(Table $table): Table
