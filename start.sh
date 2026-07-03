@@ -34,7 +34,7 @@ docker exec -it laravel-app-php php artisan key:generate
 
 # Start Migrations
 printf "\nStart migrations...\n"
-docker exec -it laravel-app-php php artisan key:generate
+docker exec -it laravel-app-php php artisan migrate --force
 
 # Set permissions
 printf "\nSetting folder permissions...\n"
