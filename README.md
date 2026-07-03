@@ -4,16 +4,16 @@
 
 ## Стэк
 
-*Laravel 13.8
-*Filament 5
-*Docker Compose 
-*Nginx
-*PHP 8.3
+* Laravel 13.8
+* Filament 5
+* Docker Compose 
+* Nginx
+* PHP 8.3
 
 ### Установка и запуск
 
 1. Запустить приложение в docker окружении. Выполните команду в консоли:
-```chmod +x ./start.sh && ./start.sh```
+- ```chmod +x ./start.sh && ./start.sh```
 2. Откройте в браузере http://localhost:8001
 
 Либо установка и запуск командами в консоли, по-шагово:
