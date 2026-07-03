@@ -4,11 +4,11 @@
 
 ## Стэк
 
-Laravel 13.8
-Filament 5
-Docker Compose 
-Nginx
-PHP 8.3
+*Laravel 13.8
+*Filament 5
+*Docker Compose 
+*Nginx
+*PHP 8.3
 
 ### Установка и запуск
 
