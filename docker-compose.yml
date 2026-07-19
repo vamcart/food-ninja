@@ -52,6 +52,8 @@ services:
         user: "${UID:-1000}:${GID:-1000}"
         volumes: 
             - ./src:/var/www/app
+            - ./php/limits.ini:/usr/local/etc/php/conf.d/limits.ini
+            - ./php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
         ports: 
             - "${PHP_HOST_PORT}:${PHP_DOCKER_CONTAINER_PORT}"
         networks: 
